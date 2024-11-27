@@ -33,5 +33,5 @@ jobs:
       run: |
         docker run -d \
           --name my-dockerized-app \
-          -p 80:80 \
+          -p 8000:80 \
           my-dockerized-app:latest
