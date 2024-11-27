@@ -20,7 +20,7 @@ jobs:
     # Build the Docker image
     - name: Build Docker Image
       run: |
-        docker build -t my-dockerized-app:latest .
+        docker build -t my-dockerized-app:latest -f ./Dockerfile .
 
     # Stop and remove the existing container (if running)
     - name: Stop Existing Container
