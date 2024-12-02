@@ -36,10 +36,12 @@ jobs:
       run: |
         docker run -d \
           --name my-website-backend \
+          --network my-app-network \
           -p 3000:3000 \
           my-website-backend:latest
         
           docker run -d \
           --name my-website-frontend \
+          --network my-app-network \
           -p 8080:80 \
           my-website-frontend:latest
