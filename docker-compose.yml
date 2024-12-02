@@ -2,13 +2,16 @@ version: '3'
 services:
   frontend:
     build: ./frontend
+    networks:
+      - my-app-network
     ports:
       - "8080:80"
-    volumes:
-      - ./frontend:/usr/share/nginx/html
   backend:
     build: ./backend
+    networks:
+      - my-app-network
     ports:
       - "3000:3000"
-    volumes:
-      - ./backend:/app
+networks:
+  my-app-network:
+    driver: bridge
