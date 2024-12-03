@@ -115,6 +115,9 @@ jobs:
             docker pull testregistry2402.azurecr.io/my-website-backend:latest
             docker pull testregistry2402.azurecr.io/my-website-frontend:latest
 
+            docker network inspect my-app-network >/dev/null 2>&1 || \
+            docker network create my-app-network
+            
             # Run new containers
             docker run -d \
               --name my-website-backend-azure \
