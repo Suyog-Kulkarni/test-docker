@@ -102,7 +102,7 @@ jobs:
 
       # Deploy to Azure VM
       - name: Deploy to Azure VM
-        uses: azure/ssh-deploy@v0.1.2
+        uses: appleboy/ssh-action@master
         with:
           ssh-private-key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
           remote-host: ${{ secrets.VM_HOST }}
