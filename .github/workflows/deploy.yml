@@ -115,12 +115,6 @@ jobs:
             docker pull testregistry2402.azurecr.io/my-website-backend:latest
             docker pull testregistry2402.azurecr.io/my-website-frontend:latest
 
-            # Stop existing containers
-            docker stop my-website-backend:latest || true
-            docker rm my-website-backend:latest || true
-            docker stop my-website-frontend:latest || true
-            docker rm my-website-frontend:latest || true
-
             # Run new containers
             docker run -d \
               --name my-website-backend \
