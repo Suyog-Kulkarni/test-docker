@@ -107,7 +107,7 @@ jobs:
           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
           host: ${{ secrets.VM_HOST }}
           username: azureuser
-          script: |
+          run: |
             # Login to Azure Container Registry
             az acr login --name testregistry2402
 
@@ -116,10 +116,10 @@ jobs:
             docker pull testregistry2402.azurecr.io/my-website-frontend:latest
 
             # Stop existing containers
-            docker stop my-website-backend || true
-            docker rm my-website-backend || true
-            docker stop my-website-frontend || true
-            docker rm my-website-frontend || true
+            docker stop my-website-backend:latest || true
+            docker rm my-website-backend:latest || true
+            docker stop my-website-frontend:latest || true
+            docker rm my-website-frontend:latest || true
 
             # Run new containers
             docker run -d \
@@ -133,3 +133,4 @@ jobs:
               --network my-app-network \
               -p 8080:80 \
               testregistry2402.azurecr.io/my-website-frontend:latest
+
