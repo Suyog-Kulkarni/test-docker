@@ -1,13 +1,13 @@
 version: '3'
 services:
   frontend:
-    build: ./frontend
+    image: testregistry2402.azurecr.io/my-website-frontend:latest
     networks:
       - my-app-network
     ports:
       - "8080:80"
   backend:
-    build: ./backend
+    image: testregistry2402.azurecr.io/my-website-backend:latest
     networks:
       - my-app-network
     ports:
