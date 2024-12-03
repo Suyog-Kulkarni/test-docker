@@ -104,11 +104,11 @@ jobs:
       - name: Deploy to Azure VM
         uses: appleboy/ssh-action@master
         with:
-          ssh-private-key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
-          remote-host: ${{ secrets.VM_HOST }}
-          remote-user: azureuser
+          key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
+          remote: ${{ secrets.VM_HOST }}
+          username: azureuser
           script: |
-            # Login to Azure Container Registry
+            #Login to Azure Container Registry
             az acr login --name testregistry2402
 
             # Pull latest images
