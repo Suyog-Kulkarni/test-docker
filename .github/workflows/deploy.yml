@@ -117,13 +117,13 @@ jobs:
 
             # Run new containers
             docker run -d \
-              --name my-website-backend \
+              --name my-website-backend-azure \
               --network my-app-network \
               -p 3000:3000 \
               testregistry2402.azurecr.io/my-website-backend:latest
 
             docker run -d \
-              --name my-website-frontend \
+              --name my-website-frontend-azure \
               --network my-app-network \
               -p 8080:80 \
               testregistry2402.azurecr.io/my-website-frontend:latest
