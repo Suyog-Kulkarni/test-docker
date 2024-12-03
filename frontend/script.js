@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorEl = document.getElementById('error');
   
     // Fetch users and products
-    fetch('http://localhost:3000/api/data')
+    fetch('http:20.244.5.11/3000/api/data')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
