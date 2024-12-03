@@ -117,16 +117,16 @@ jobs:
 
             docker network inspect my-app-network >/dev/null 2>&1 || \
             docker network create my-app-network
-            
+
             # Run new containers
             docker run -d \
-              --name my-website-backend-azure \
+              --name my-website-backend-azure-image \
               --network my-app-network \
               -p 3000:3000 \
               testregistry2402.azurecr.io/my-website-backend:latest
 
             docker run -d \
-              --name my-website-frontend-azure \
+              --name my-website-frontend-azure-image \
               --network my-app-network \
               -p 8080:80 \
               testregistry2402.azurecr.io/my-website-frontend:latest
