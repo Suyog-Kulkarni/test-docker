@@ -105,10 +105,10 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
-          remote: ${{ secrets.VM_HOST }}
+          host: ${{ secrets.VM_HOST }}
           username: azureuser
           script: |
-            #Login to Azure Container Registry
+            # Login to Azure Container Registry
             az acr login --name testregistry2402
 
             # Pull latest images
