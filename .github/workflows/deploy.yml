@@ -107,7 +107,7 @@ jobs:
           key: ${{ secrets.VM_SSH_PRIVATE_KEY }}
           host: ${{ secrets.VM_HOST }}
           username: azureuser
-          run: |
+          script: |
             # Login to Azure Container Registry
             az acr login --name testregistry2402
 
