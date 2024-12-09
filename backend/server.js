@@ -7,7 +7,7 @@ const PORT = 3000;
 // Enable CORS
 app.use(cors());
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://20.244.5.11:8080");
+    res.header("Access-Control-Allow-Origin", "http://74.225.248.0:8080");
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
