@@ -1,0 +1,25 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sonar-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Run SonarScanner analysis
+      - name: Run SonarQube Analysis
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/usr/src \
+            sonarsource/sonar-scanner-cli \
+            -Dsonar.projectKey=my-website \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=http://20.235.57.117:9000 \
+            -Dsonar.login=${{ secrets.SONARQUBE_TOKEN }}
