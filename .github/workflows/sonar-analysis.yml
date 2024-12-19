@@ -20,6 +20,6 @@ jobs:
             -v ${{ github.workspace }}:/usr/src \
             sonarsource/sonar-scanner-cli \
             -Dsonar.projectKey=my-website \
-            -Dsonar.sources=backend,frontend \
+            -Dsonar.sources="**/*.js,**/*.html,**/*.css,**/*.yml" \
             -Dsonar.host.url=http://20.235.57.117:9000 \
             -Dsonar.login=${{ secrets.SONARQUBE_TOKEN }}
