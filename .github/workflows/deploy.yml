@@ -10,11 +10,6 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      # Checkout code
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      # Azure Login
       - name: Azure Login
         uses: azure/login@v1
         with:
@@ -45,10 +40,8 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: azureuser
           script: |
-            # Login to Azure Container Registry
             az acr login --name testregistry2402
 
-            # Pull latest images
             docker pull testregistry2402.azurecr.io/my-website-backend:latest
             docker pull testregistry2402.azurecr.io/my-website-frontend:latest
 
@@ -58,7 +51,6 @@ jobs:
             docker network inspect my-app-network >/dev/null 2>&1 || \
             docker network create my-app-network
 
-            # Run new containers
             docker run -d \
               --name my-website-backend-azure-image \
               --network my-app-network \
