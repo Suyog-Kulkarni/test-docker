@@ -9,9 +9,11 @@ jobs:
   sonar-analysis:
     runs-on: ubuntu-latest
     steps:
+      # Checkout the code
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Run SonarScanner analysis
       - name: Run SonarQube Analysis
         run: |
           docker run --rm \
