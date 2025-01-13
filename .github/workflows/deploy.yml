@@ -18,18 +18,15 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Login to Azure Container Registry
       - name: Azure Container Registry Login
         run: |
           az acr login --name testregistry2402
 
-      # Build and Push Backend Image
       - name: Build and Push Backend Image
         run: |
           docker build -t testregistry2402.azurecr.io/my-website-backend:latest ./backend
           docker push testregistry2402.azurecr.io/my-website-backend:latest
 
-      # Build and Push Frontend Image
       - name: Build and Push Frontend Image
         run: |
           docker build -t testregistry2402.azurecr.io/my-website-frontend:latest ./frontend
@@ -49,10 +46,11 @@ jobs:
             docker pull testregistry2402.azurecr.io/my-website-frontend:latest
 
             docker stop my-website-backend-azure-image || true && docker rm my-website-backend-azure-image || true
+            # even if the commands fails || true ensures that script still runs
+
             docker stop my-website-frontend-azure-image || true && docker rm my-website-frontend-azure-image || true
 
-            docker network inspect my-app-network >/dev/null 2>&1 || \
-            docker network create my-app-network
+            docker network inspect my-app-network || docker network create my-app-network
 
             docker run -d \
               --name my-website-backend-azure-image \
